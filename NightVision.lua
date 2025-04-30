@@ -19,8 +19,7 @@ local LocalPlayer = Players.LocalPlayer
 local FOVCircle = Drawingnew("Circle")
 local FOVCircleOutline = Drawingnew("Circle")
 local nightVisionEnabled = false
-local nightVisionTransparency = 0.5
-local nightVisionColor = Color3.fromRGB(0, 255, 0) -- Green tint for night vision
+local nightVisionTransparency = 0.7  -- Adjusted transparency for a darker night vision effect (without tint)
 local ESPObjects = {}
 
 --// Aimbot Settings (Exunys Aimbot integration)
@@ -95,8 +94,8 @@ local function UpdateESP()
                     local espBox = Drawingnew("Line")
                     espBox.From = Vector2new(screenPos.X, screenPos.Y)
                     espBox.To = Vector2new(screenPos.X, screenPos.Y + 10)
-                    espBox.Color = nightVisionEnabled and nightVisionColor or Color3.fromRGB(255, 255, 255)
-                    espBox.Transparency = nightVisionEnabled and nightVisionTransparency or 1
+                    espBox.Color = nightVisionEnabled and Color3.fromRGB(255, 255, 255) or Color3.fromRGB(255, 255, 255)
+                    espBox.Transparency = nightVisionEnabled and nightVisionTransparency or 1  -- Transparency for dark effect
                     espBox.Thickness = 2
                     ESPObjects[player] = espBox
                 end
@@ -122,3 +121,4 @@ end)
 
 --// External ESP Integration (Loadstring for External ESP)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/wa0101/Roblox-ESP/refs/heads/main/esp.lua", true))()
+
